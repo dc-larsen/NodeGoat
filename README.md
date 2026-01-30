@@ -6,12 +6,9 @@ Example repository demonstrating Socket's Tier 1 reachability analysis using the
 
 Reachability analysis determines which vulnerabilities in your dependencies are actually callable from your application code. This reduces alert noise by distinguishing between theoretical vulnerabilities and those that pose real risk.
 
-## Live Example
+## About This Example
 
-This repository runs Socket's reachability analysis on [OWASP NodeGoat](https://github.com/OWASP/NodeGoat), a deliberately vulnerable Node.js application.
-
-- [View latest scan results](https://socket.dev/dashboard/org/david-s-github/repo/NodeGoat)
-- [View workflow runs](https://github.com/dc-larsen/socket-tier1-reachability-example/actions)
+This repository runs Socket's reachability analysis on [OWASP NodeGoat](https://github.com/OWASP/NodeGoat), a deliberately vulnerable Node.js application. View the [workflow runs](../../actions) to see reachability in action.
 
 ## Quick Start
 
