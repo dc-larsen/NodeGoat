@@ -27,8 +27,10 @@ Add to `.github/workflows/socket-security-scan.yml`:
 name: Socket Security Scan
 
 on:
+  # Run weekly on Monday at 6 AM UTC
   schedule:
     - cron: "0 6 * * 1"
+  # Allow manual triggers from GitHub Actions UI
   workflow_dispatch:
 
 jobs:
@@ -39,18 +41,22 @@ jobs:
       contents: read
 
     steps:
+      # Full checkout required for reachability to analyze code paths
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
+      # Python 3.12+ required for Socket CLI
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
+      # Node.js 20+ required for reachability analysis engine
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
 
+      # uv required for Python dependency resolution in reachability
       - uses: astral-sh/setup-uv@v4
 
       - name: Install Socket CLI
@@ -66,6 +72,10 @@ jobs:
             --reach \
             --reach-memory-limit 16384 \
             --reach-timeout 3600
+
+          # --reach                   Enable Tier 1 reachability analysis
+          # --reach-memory-limit      Memory limit in MB (default: 8192)
+          # --reach-timeout           Timeout in seconds (default: 1800)
 ```
 
 ## Supported Ecosystems
